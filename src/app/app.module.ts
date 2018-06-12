@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { MapComponent } from './components/map/map.component';
-import { RestaurantsListComponent } from './restaurants-list/restaurants-list.component';
+import { RestaurantsListComponent } from './components/restaurants-list/restaurants-list.component';
 
 @NgModule({
   declarations: [
