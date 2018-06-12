@@ -4,6 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { MapComponent } from './components/map/map.component';
 import { RestaurantsListComponent } from './components/restaurants-list/restaurants-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+import { MelpService } from './services/melp.service';
 
 @NgModule({
   declarations: [
@@ -12,9 +15,11 @@ import { RestaurantsListComponent } from './components/restaurants-list/restaura
     RestaurantsListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
-  providers: [],
+  providers: [MelpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
