@@ -6,9 +6,16 @@
 
 <section>
   <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)" [zoom]="zoom">
-    <agm-circle (dragEnd)="mapDrag($event)" [latitude]="lat" [longitude]="lng" [circleDraggable]="true" [radius]="radius">
+    <agm-circle
+   (dragEnd)="dragRadius($event)" 
+    [latitude]="lat" [longitude]="lng"
+     [circleDraggable]="true" 
+    [radius]="radius">
       <div *ngFor="let restaurant of restaurantsOnRadius">
-        <agm-marker [latitude]="restaurant.adress.location.lat" [longitude]="restaurant.adress.location.lng" *ngIf="locationChosen">
+        <agm-marker
+         [latitude]="restaurant.adress.location.lat" 
+         [longitude]="restaurant.adress.location.lng"
+         *ngIf="locationChosen">
           <agm-info-window>
             <p>
               <b>{{restaurant.name}}</b>
@@ -20,7 +27,9 @@
     </agm-circle>
   </agm-map>
 </section>
-
+<div> 
+<input #newRadius type="number" (keydown.enter)="sendRadius(newRadius)" placeholder="type the radius in meters">
+</div>
 <section> 
 <mat-card header class="sort-card">
   <mat-card-title>Sort by</mat-card-title>
