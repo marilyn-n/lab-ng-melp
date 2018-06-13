@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { MelpService } from './services/melp.service';
 import { FacebookModule } from 'ngx-facebook';
+import { StaticalComponent } from './components/statical/statical.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { FacebookModule } from 'ngx-facebook';
     AppComponent,
     MapComponent,
     RestaurantsListComponent,
+    StaticalComponent,
   ],
   imports: [
     BrowserModule,
