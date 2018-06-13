@@ -2,7 +2,7 @@
   background-image: url('../assets/foods.jpg');
   background-repeat: none;
   position: fixed;
-  height: 400px;
+  height: 500px;
   width: 1270px;
   filter: blur();
 }

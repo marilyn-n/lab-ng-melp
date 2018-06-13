@@ -1,9 +1,11 @@
-<p>
-  map works!
-</p>
-
 <form class="example-form">
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Insert Adress">
   </mat-form-field>
 </form>
+
+<section> 
+  <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map>
+</section>

@@ -10,3 +10,12 @@
 .example-full-width {
   width: 100%;
 }
+
+agm-map{
+  position: relative;
+  left: 350px;
+  top: 150px;
+  width: 600px;
+  height: 300px;
+}
+
