@@ -10,6 +10,7 @@ import { RestaurantsListComponent } from './components/restaurants-list/restaura
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { MelpService } from './services/melp.service';
+import { FacebookModule } from 'ngx-facebook';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MelpService } from './services/melp.service';
     HttpModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDB4N0qSz7PO1NvWoEbcM5PFBYwKGxwD-I'
-    })
+    }),
+    FacebookModule.forRoot(),
   ],
   providers: [MelpService],
   bootstrap: [AppComponent]

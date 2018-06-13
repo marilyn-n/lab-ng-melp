@@ -1,3 +1,9 @@
+h1{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  margin-left: 20px;
+}
+
 .example-card {
   width: 300px;
   /* position: absolute;
@@ -23,4 +29,8 @@ li {
 
 #cards{
   padding-left: 2.5em;
+}
+
+.fb-like, .fb-like span {
+  width: 100% !important;
 }

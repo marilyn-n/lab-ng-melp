@@ -1,5 +1,5 @@
 <body id="cards">
-   
+   <h1>Restaurants</h1>
 
 <div *ngFor="let restaurant of restaurants" class="card-body"> 
 <mat-card class="example-card">
@@ -8,7 +8,7 @@
     <mat-card-title>{{restaurant.name}}</mat-card-title>
     <mat-card-subtitle>Melp.com</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <img mat-card-image src="../../../assets/melp-foods.jpg" alt="melp-foods">
   <mat-card-content>
   </mat-card-content>
   <ul>
@@ -17,11 +17,13 @@
     <li>{{restaurant.address.city}}</li>
     <li>{{restaurant.address.state}}</li>
     <li> <a href="{{restaurant.contact.site}}">{{restaurant.contact.site}}</a></li>
+    <li>{{restaurant.contact.phone}}</li>
+    <li>{{restaurant.contact.email}}</li>
   </ul>
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+     <div class="fb-like facebook" [attr.data-href]="restaurant.contact.site" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true" ></div>
   </mat-card-actions>
 </mat-card>
+
 </div>
 </body>
