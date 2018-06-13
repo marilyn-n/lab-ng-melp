@@ -1,10 +1,8 @@
 #bg-food{
   background-image: url('../assets/foods.jpg');
   background-repeat: none;
-  position: fixed;
   height: 500px;
   width: 1270px;
-  filter: blur();
 }
 
 .example-spacer {

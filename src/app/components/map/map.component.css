@@ -3,8 +3,8 @@
   max-width: 500px;
   width: 100%;
   position: absolute;
-  left: 350px;
-  top: 20px;
+  left: 110px;
+  top: 100px;
 }
 
 .example-full-width {
@@ -13,9 +13,17 @@
 
 agm-map{
   position: relative;
-  left: 350px;
-  top: 150px;
+  left: 100px;
+  top: 100px;
   width: 600px;
   height: 300px;
 }
 
+.sort-card{
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  top: 170px;
+  left: 800px;
+  opacity: .8;
+}

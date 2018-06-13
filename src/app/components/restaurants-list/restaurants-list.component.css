@@ -1,0 +1,26 @@
+.example-card {
+  width: 300px;
+  /* position: absolute;
+  top: 650px;
+  left: 110px; */
+  margin: 5px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.card-body{
+  float: left;
+  padding: 1em;
+}
+
+li {
+  list-style: none;
+  font-size: 12px;
+}
+
+#cards{
+  padding-left: 2.5em;
+}

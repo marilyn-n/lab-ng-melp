@@ -11,7 +11,7 @@ export class MapComponent implements OnInit {
   lat = 19.438655;
   lng = -99.1305917;
   locationChosen = false;
-  restaurants = {};
+  restaurants;
 
   constructor(private _melpService: MelpService) { }
 
