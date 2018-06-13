@@ -4,26 +4,31 @@
   </mat-form-field>
 </form>
 
-<section> 
-  <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)">
-    <agm-marker 
-    [latitude]="lat" 
-    [longitude]="lng"
-    *ngIf="locationChosen">
-    <agm-info-window>
-        <p><b>jklñ´</b></p>
-        <p><b>ghjkl</b></p>
-    </agm-info-window>
-  </agm-marker>
+<section>
+  <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)" [zoom]="zoom">
+    <agm-circle (dragEnd)="mapDrag($event)" [latitude]="lat" [longitude]="lng" [circleDraggable]="true" [radius]="radius">
+      <div *ngFor="let restaurant of restaurantsOnRadius">
+        <agm-marker [latitude]="restaurant.adress.location.lat" [longitude]="restaurant.adress.location.lng" *ngIf="locationChosen">
+          <agm-info-window>
+            <p>
+              <b>{{restaurant.name}}</b>
+              <b>Rating: {{restaurant.rating}}</b>
+            </p>
+          </agm-info-window>
+        </agm-marker>
+      </div>
+    </agm-circle>
   </agm-map>
 </section>
 
-<mat-card header class="sort-card"> 
-    <mat-card-title>Sort by</mat-card-title>
-    <mat-card-content> 
-<mat-checkbox>Rating</mat-checkbox>
-<br />
-<mat-checkbox>A - Z</mat-checkbox>
-<br />
-</mat-card-content>
+<section> 
+<mat-card header class="sort-card">
+  <mat-card-title>Sort by</mat-card-title>
+  <mat-card-content>
+    <mat-checkbox>Rating</mat-checkbox>
+    <br />
+    <mat-checkbox>A - Z</mat-checkbox>
+    <br />
+  </mat-card-content>
 </mat-card>
+</section>
