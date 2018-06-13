@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+
 
 import { AppComponent } from './app.component';
 import { AgmCoreModule } from '@agm/core';
@@ -14,12 +16,13 @@ import { MelpService } from './services/melp.service';
   declarations: [
     AppComponent,
     MapComponent,
-    RestaurantsListComponent
+    RestaurantsListComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
+    HttpModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDB4N0qSz7PO1NvWoEbcM5PFBYwKGxwD-I'
     })

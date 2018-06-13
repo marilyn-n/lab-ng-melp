@@ -5,7 +5,11 @@
 </form>
 
 <section> 
-  <agm-map [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)">
+    <agm-marker 
+    [latitude]="lat" 
+    [longitude]="lng"
+    *ngIf="locationChosen">
+  </agm-marker>
   </agm-map>
 </section>
