@@ -1,7 +1,7 @@
 <body id="cards">
   <h1>Restaurants</h1>
 
-  <div *ngFor="let restaurant of restaurants" class="card-body">
+  <div *ngFor="let restaurant of restaurants | orderBy:'rating':true" class="card-body">
     <mat-card class="example-card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>

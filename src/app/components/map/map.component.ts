@@ -9,64 +9,54 @@ import { MelpService } from '../../services/melp.service';
 export class MapComponent implements OnInit {
   lat = 19.438655;
   lng = -99.1305917;
-  locationChosen = false;
   zoom = 16;
-  restaurants;
   radius = 300;
-  restaurantsInRadius = [];
   m;
-
-  constructor(private _melpService: MelpService) { }
+  restaurants;
+  insideRadius = [];
+constructor(private restaurantService: MelpService) {}
 
   ngOnInit() {
-    this._melpService.getRestaurants()
-    .subscribe((data) => {
-      this.restaurants = data.restaurants;
-      console.log(data);
+    this.restaurantService.getRestaurants()
+    .subscribe(restaurant => {
+      this.restaurants = restaurant;
+      this.restaurantInsideRadius();
     });
-
   }
 
-  onChoseLocation(event) {
-    this.lat = event.coords.lat;
-    this.lng = event.coords.lng;
-    this.locationChosen = true;
-    console.log(event);
-  }
-
-restaurantsOnRadius() {
-  this.restaurants.forEach(restaurant => {
-    if (this.getDistance(restaurant.address.location.lat,
-       restaurant.address.location.lng) <= this.radius
-       && this.restaurantsInRadius.indexOf(restaurant) < 0) {
-        this.restaurantsInRadius.push(restaurant);
+  restaurantInsideRadius() {
+    this.insideRadius = [];
+    this.restaurants.forEach(restaurant => {
+      if (this.getDistance(restaurant.address.location.lat, restaurant.address.location.lng)
+      <= this.radius && this.insideRadius.indexOf(restaurant) < 0) {
+        this.insideRadius.push(restaurant);
       }
     });
   }
 
   sendRadius(newRadius) {
     this.radius = Number(newRadius.value);
-    this.restaurantsOnRadius();
+    this.restaurantInsideRadius();
   }
 
-  dragRadius($event) {
+  mapDragEnd($event) {
     this.lat = $event.coords.lat;
     this.lng = $event.coords.lng;
-    this.restaurantsOnRadius();
+    this.restaurantInsideRadius();
   }
 
-getDistance(lat2, lng2) {
+  getDistance(lat2, lng2) {
 
-const rad = function(x) {return x * Math.PI / 180; };
-const R = 6378.137;
-const dLat = rad( lat2 - this.lat );
-const dLong = rad(lng2 - this.lng );
-const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-Math.cos(rad(this.lat)) * Math.cos(rad(lat2)) * Math.sin(dLong / 2) * Math.sin(dLong / 2);
-const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-const d = R * c;
-this.m = d.toFixed(2);
-this.m = this.m * 1000;
-return this.m;
+    const rad = function(x) {return x * Math.PI / 180; };
+    const R = 6378.137; // Radio de la tierra en km
+    const dLat = rad( lat2 - this.lat );
+    const dLong = rad(lng2 - this.lng );
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(rad(this.lat)) *
+    Math.cos(rad(lat2)) * Math.sin(dLong / 2) * Math.sin(dLong / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const d = R * c;
+    this.m = d.toFixed(2); // Retorna tres decimales
+    this.m = this.m * 1000;
+    return this.m;
   }
 }

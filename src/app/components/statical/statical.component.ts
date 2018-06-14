@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { variable } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-statical',
@@ -6,15 +7,48 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./statical.component.css']
 })
 export class StaticalComponent implements OnInit {
-@Input() allRestaurants;
-totalRestaurants = Number;
+  @Input() theRestaurants;
+  totalRestaurants: number;
+
   constructor() { }
 
   ngOnInit() {
   }
 
-restaurantsLength() {
-  return this.allRestaurants.length;
+theRestaurantsLength() {
+  return this.theRestaurants.length;
+}
+
+avarageRestaurants() {
+  let count = 0;
+  this.theRestaurants.forEach(restaurant => {
+    count += restaurant.rating;
+  });
+return count / this.theRestaurantsLength();
+}
+
+IntergerAvarageRestaurants() {
+  return Math.round(this.avarageRestaurants());
+}
+
+avarage(data) {
+  let count = 0;
+  data.forEach(res => {
+    count += res;
+  });
+return count / data.length;
+}
+
+standardDeviation() {
+  const avarage = this.avarageRestaurants();
+  const squareDiffs = this.theRestaurants.map(function(restaurant) {
+  const diff = restaurant.rating - avarage;
+  const sqrDiff = diff * diff;
+  return sqrDiff;
+  });
+  const avgSquareDiff = this.avarage(squareDiffs);
+  const stdDev = Math.sqrt(avgSquareDiff);
+  return Math.round(stdDev * 100) / 100;
 }
 
 }

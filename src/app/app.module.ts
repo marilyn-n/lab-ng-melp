@@ -12,6 +12,8 @@ import { MaterialModule } from './material.module';
 import { MelpService } from './services/melp.service';
 import { FacebookModule } from 'ngx-facebook';
 import { StaticalComponent } from './components/statical/statical.component';
+import { OrderModule } from 'ngx-order-pipe';
+
 
 
 @NgModule({
@@ -30,6 +32,7 @@ import { StaticalComponent } from './components/statical/statical.component';
       apiKey: 'AIzaSyDB4N0qSz7PO1NvWoEbcM5PFBYwKGxwD-I'
     }),
     FacebookModule.forRoot(),
+    OrderModule,
   ],
   providers: [MelpService],
   bootstrap: [AppComponent]

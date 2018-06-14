@@ -1,46 +1,53 @@
-<section>
-  <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)" [zoom]="zoom">
-    <agm-circle
-   (dragEnd)="dragRadius($event)" 
-    [latitude]="lat" [longitude]="lng"
-     [circleDraggable]="true" 
-    [radius]="radius">
-      <div *ngFor="let restaurant of restaurantsOnRadius">
-        <agm-marker
-         [latitude]="restaurant.adress.location.lat" 
-         [longitude]="restaurant.adress.location.lng"
-         *ngIf="locationChosen">
-          <agm-info-window>
-            <p>
-              <b>{{restaurant.name}}</b>
-              <b>Rating: {{restaurant.rating}}</b>
-            </p>
-          </agm-info-window>
-        </agm-marker>
-      </div>
-    </agm-circle>
-  </agm-map>
-</section>
-   <form class="example-form">
-        <mat-form-field class="example-full-width">
-           <input matInput #newRadius type="number" placeholder="type the radius in meters" (keydown.enter)="sendRadius(newRadius)">
-      </mat-form-field>
-  </form>
-<section> 
-<mat-card header class="sort-card">
-    <app-statical [allRestaurants]="restaurantsOnRadius"></app-statical>
-
-  <mat-card-title>Sort by</mat-card-title>
-  <mat-card-content>
-    <mat-checkbox>Rating</mat-checkbox>
-    <br />
-    <mat-checkbox>A - Z</mat-checkbox>
-    <br />
-  </mat-card-content>
-</mat-card>
-<br>
-<br>
-<br>
-<app-restaurants-list [allRestaurants]="restaurantsOnRadius"></app-restaurants-list>
-</section>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+    <section>
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+          <agm-circle (dragEnd)="mapDragEnd($event)" [latitude]="lat" [longitude]="lng" [circleDraggable]="true" [radius]="radius">
+              <div *ngFor="let restaurant of insideRadius">
+              <agm-marker
+               [latitude]="restaurant.adress.location.lat" 
+               [longitude]="restaurant.adress.location.lng"
+               *ngIf="locationChosen">
+                <agm-info-window>
+                  <p>
+                    <b>{{restaurant.name}}</b>
+                    <b>Rating: {{restaurant.rating}}</b>
+                  </p>
+                </agm-info-window>
+              </agm-marker>
+            </div>
+          </agm-circle>
+        </agm-map>
+      </section>
+         <form class="example-form">
+              <mat-form-field class="example-full-width">
+                 <input matInput #newRadius type="number" placeholder="type the radius in meters" (keydown.enter)="sendRadius(newRadius)">
+            </mat-form-field>
+        </form>
+      <section> 
+      
+      <mat-card header class="sort-card">
+          <app-statical [theRestaurants]="insideRadius"></app-statical>
+          <mat-card-title>Sort by</mat-card-title>
+        <mat-card-content>
+          <mat-checkbox>Rating</mat-checkbox>
+          <br />
+          <mat-checkbox>A - Z</mat-checkbox>
+          <br />
+        </mat-card-content>
+      </mat-card>
+      </section>
+      
+      <app-restaurants-list [theRestaurants]="insideRadius"></app-restaurants-list>
+      
+      
+      
+  
+</body>
+</html>
