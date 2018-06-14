@@ -1,29 +1,52 @@
 <body id="cards">
-   <h1>Restaurants</h1>
+  <h1>Restaurants</h1>
 
-<div *ngFor="let restaurant of restaurants" class="card-body"> 
-<mat-card class="example-card">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{restaurant.name}}</mat-card-title>
-    <mat-card-subtitle>Melp.com</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="../../../assets/melp-foods.jpg" alt="melp-foods">
-  <mat-card-content>
-  </mat-card-content>
-  <ul>
-    <li>{{restaurant.rating}}</li>
-    <li>{{restaurant.address.street}}</li>
-    <li>{{restaurant.address.city}}</li>
-    <li>{{restaurant.address.state}}</li>
-    <li> <a href="{{restaurant.contact.site}}">{{restaurant.contact.site}}</a></li>
-    <li>{{restaurant.contact.phone}}</li>
-    <li>{{restaurant.contact.email}}</li>
-  </ul>
-  <mat-card-actions>
-     <div class="fb-like facebook" [attr.data-href]="restaurant.contact.site" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true" ></div>
-  </mat-card-actions>
-</mat-card>
+  <div *ngFor="let restaurant of restaurants" class="card-body">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{restaurant.name}}</mat-card-title>
+        <mat-card-subtitle>Melp.com</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="../../../assets/melp-foods.jpg" alt="melp-foods">
+      <mat-card-content>
+      </mat-card-content>
+      <ul>
+        <li>{{restaurant.rating}}</li>
+        <span>
+            <i data-vi="map-marker"></i>
+          </span>
+        <li> 
+     
+          {{restaurant.address.street}}
+          {{restaurant.address.city}}
+          {{restaurant.address.state}}
+       
+      </li>
+        <span>
+            <i data-vi="laptop"></i>
+          </span>
+        <li>
+          <a href="{{restaurant.contact.site}}">{{restaurant.contact.site}}</a>
+        </li>
+        <span>
+            <i data-vi="mobile"></i>
+        </span> 
+        <li>
+          {{restaurant.contact.phone}}
+        </li>
+        <span>
+            <i data-vi="envelope"></i>
+          </span>
+        <li>
+          {{restaurant.contact.email}}
+        </li>
+      </ul>
+      <mat-card-actions>
+        <div class="fb-like facebook" [attr.data-href]="restaurant.contact.site" data-layout="button_count" data-action="like" data-size="small"
+          data-show-faces="true" data-share="true"></div>
+      </mat-card-actions>
+    </mat-card>
 
-</div>
+  </div>
 </body>
