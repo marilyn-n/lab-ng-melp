@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-statical',
@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./statical.component.css']
 })
 export class StaticalComponent implements OnInit {
-
+@Input() allRestaurants;
+totalRestaurants = Number;
   constructor() { }
 
   ngOnInit() {
   }
+
+restaurantsLength() {
+  return this.allRestaurants.length;
+}
 
 }

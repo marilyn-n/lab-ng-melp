@@ -1,9 +1,3 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Insert Adress">
-  </mat-form-field>
-</form>
-
 <section>
   <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)" [zoom]="zoom">
     <agm-circle
@@ -27,11 +21,15 @@
     </agm-circle>
   </agm-map>
 </section>
-<div> 
-<input #newRadius type="number" (keydown.enter)="sendRadius(newRadius)" placeholder="type the radius in meters">
-</div>
+   <form class="example-form">
+        <mat-form-field class="example-full-width">
+           <input matInput #newRadius type="number" placeholder="type the radius in meters" (keydown.enter)="sendRadius(newRadius)">
+      </mat-form-field>
+  </form>
 <section> 
 <mat-card header class="sort-card">
+    <app-statical [allRestaurants]="restaurantsOnRadius"></app-statical>
+
   <mat-card-title>Sort by</mat-card-title>
   <mat-card-content>
     <mat-checkbox>Rating</mat-checkbox>
@@ -40,4 +38,9 @@
     <br />
   </mat-card-content>
 </mat-card>
+<br>
+<br>
+<br>
+<app-restaurants-list [allRestaurants]="restaurantsOnRadius"></app-restaurants-list>
 </section>
+

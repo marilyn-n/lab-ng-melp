@@ -7,6 +7,7 @@ import { MelpService } from '../../services/melp.service';
   styleUrls: ['./restaurants-list.component.css']
 })
 export class RestaurantsListComponent implements OnInit {
+@Input() allRestaurants;
 restaurants;
 constructor(private restaurantsService: MelpService) {}
 
