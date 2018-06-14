@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MelpService } from '../../services/melp.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { MelpService } from '../../services/melp.service';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
+  @Input() theRestaurants;
   lat = 19.438655;
   lng = -99.1305917;
   zoom = 16;
@@ -59,4 +60,5 @@ constructor(private restaurantService: MelpService) {}
     this.m = this.m * 1000;
     return this.m;
   }
+
 }

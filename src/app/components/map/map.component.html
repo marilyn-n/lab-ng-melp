@@ -23,19 +23,13 @@
       </section>
          <form class="example-form">
               <mat-form-field class="example-full-width">
-                 <input matInput #newRadius type="number" placeholder="type the radius in meters" (keydown.enter)="sendRadius(newRadius)">
+                 <input matInput type="number" placeholder="type the radius in meters" (keydown.enter)="sendRadius(newRadius)">
             </mat-form-field>
         </form>
       <section> 
       <mat-card header class="sort-card">
+          <mat-card-title >Statical Data</mat-card-title>
           <app-statical [theRestaurants]="insideRadius"></app-statical>
-          <mat-card-title>Sort by</mat-card-title>
-        <mat-card-content>
-          <mat-checkbox>Rating</mat-checkbox>
-          <br />
-          <mat-checkbox>A - Z</mat-checkbox>
-          <br />
-        </mat-card-content>
       </mat-card>
       </section>
   
