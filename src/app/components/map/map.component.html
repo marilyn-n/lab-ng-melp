@@ -1,5 +1,3 @@
-
-<body>
     <section>
         <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
           <agm-circle (dragEnd)="mapDragEnd($event)" [latitude]="lat" [longitude]="lng" [circleDraggable]="true" [radius]="radius">
@@ -37,5 +35,4 @@
           <app-restaurants-list [theRestaurants]="insideRadius"></app-restaurants-list>
 
       </div>
-</body>
 
