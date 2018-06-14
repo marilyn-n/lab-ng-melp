@@ -1,23 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-</head>
+
 <body>
     <section>
         <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
           <agm-circle (dragEnd)="mapDragEnd($event)" [latitude]="lat" [longitude]="lng" [circleDraggable]="true" [radius]="radius">
               <div *ngFor="let restaurant of insideRadius">
               <agm-marker
-               [latitude]="restaurant.adress.location.lat" 
-               [longitude]="restaurant.adress.location.lng"
-               *ngIf="locationChosen">
+               [latitude]="restaurant.address.location.lat" 
+               [longitude]="restaurant.address.location.lng">
                 <agm-info-window>
                   <p>
                     <b>{{restaurant.name}}</b>
+                    <br />
                     <b>Rating: {{restaurant.rating}}</b>
+                    <br />
+                    <b><a href="{{restaurant.contact.site}}">{{restaurant.contact.site}}</a></b>
                   </p>
                 </agm-info-window>
               </agm-marker>
@@ -31,7 +27,6 @@
             </mat-form-field>
         </form>
       <section> 
-      
       <mat-card header class="sort-card">
           <app-statical [theRestaurants]="insideRadius"></app-statical>
           <mat-card-title>Sort by</mat-card-title>
@@ -43,11 +38,10 @@
         </mat-card-content>
       </mat-card>
       </section>
-      
-      <app-restaurants-list [theRestaurants]="insideRadius"></app-restaurants-list>
-      
-      
-      
   
+      <div class="res-list">
+          <app-restaurants-list [theRestaurants]="insideRadius"></app-restaurants-list>
+
+      </div>
 </body>
-</html>
+
